@@ -1,0 +1,41 @@
+# Cuestionario · {{ material.titulo }}
+
+{% if material.modulo %}**Módulo:** {{ material.modulo }}  
+{% endif %}
+{% if material.curso %}**Curso:** {{ material.curso }}  
+{% endif %}
+{% if material.fecha %}**Fecha:** {{ material.fecha }}  
+{% endif %}
+
+Responde sin mirar los apuntes. Después puedes comprobar con la plantilla de
+soluciones.
+
+{% if material.preguntas %}
+## Preguntas
+
+{% for pregunta in material.preguntas %}
+### {{ pregunta.id }} · {{ pregunta.tipo | capitalize }}
+
+**Dificultad:** {{ pregunta.dificultad }}{% if pregunta.tema %} · **Tema:** {{ pregunta.tema }}{% endif %}
+
+
+{{ pregunta.enunciado }}
+
+{% if pregunta.opciones %}
+{% for opcion in pregunta.opciones %}
+- {{ opcion }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if material.ejercicios %}
+## Ejercicios
+
+{% for ejercicio in material.ejercicios %}
+### {{ ejercicio.id }} · {{ ejercicio.titulo }}
+
+{{ ejercicio.enunciado }}
+
+{% endfor %}
+{% endif %}

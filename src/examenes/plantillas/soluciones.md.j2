@@ -1,0 +1,43 @@
+# Soluciones · {{ material.titulo }}
+
+{% if material.modulo %}**Módulo:** {{ material.modulo }}  
+{% endif %}
+{% if material.curso %}**Curso:** {{ material.curso }}  
+{% endif %}
+
+{% if material.preguntas %}
+## Preguntas
+
+{% for pregunta in material.preguntas %}
+### {{ pregunta.id }} · {{ pregunta.tipo | capitalize }}
+
+{{ pregunta.enunciado }}
+
+{% if pregunta.respuesta %}
+**Respuesta:** {{ pregunta.respuesta }}
+{% else %}
+**Respuesta:** sin registrar.
+{% endif %}
+
+{% if pregunta.explicacion %}
+**Explicación:** {{ pregunta.explicacion }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if material.ejercicios %}
+## Ejercicios
+
+{% for ejercicio in material.ejercicios %}
+### {{ ejercicio.id }} · {{ ejercicio.titulo }}
+
+{{ ejercicio.enunciado }}
+
+{% if ejercicio.solucion %}
+{{ ejercicio.solucion }}
+{% else %}
+Sin solución registrada.
+{% endif %}
+
+{% endfor %}
+{% endif %}

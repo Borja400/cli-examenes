@@ -1,0 +1,27 @@
+[project]
+name = "examenes"
+version = "0.1.0"
+description = "Genera material de estudio desde YAML y plantillas"
+readme = "README.md"
+authors = [
+    { name = "Borja Herreros", email = "borjaherreros6@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "jinja2>=3.1.0",
+    "pyyaml>=6.0.0",
+    "rich>=15.0.0",
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+examenes = "examenes.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]

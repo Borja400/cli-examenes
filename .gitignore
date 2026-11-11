@@ -1,0 +1,29 @@
+# Entorno y cachés de Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Empaquetado
+dist/
+build/
+
+# Salidas generadas y sandbox de pruebas
+salida/
+pruebas-examenes/
+
+# Secretos: nunca se suben
+.env
+.env.*
+
+# Editores y sistema
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,94 @@
+version: 1
+titulo: "Pruebas y depuración en entornos de desarrollo"
+modulo: "Entornos de desarrollo"
+curso: "1º DAM"
+autor: "Borja Herreros"
+fecha: 2026-11-20
+descripcion: |
+  Material de repaso para preparar una prueba escrita y un ejercicio práctico.
+  El contenido es un ejemplo original, no una copia de los apuntes del módulo.
+objetivos:
+  - "Diferenciar error, fallo y defecto."
+  - "Escribir pruebas unitarias básicas con casos conocidos."
+  - "Usar el depurador para seguir la ejecución de un programa."
+temas:
+  - id: "tema-1"
+    titulo: "Pruebas unitarias"
+    resumen: |
+      Una prueba unitaria comprueba una unidad pequeña del programa, como una
+      función o una clase, de forma aislada. Debe ser rápida, repetible y dar
+      un resultado claro: pasa o no pasa.
+    puntos_clave:
+      - "Una prueba debe ser rápida, aislada y repetible."
+      - "Patrón AAA: preparar, actuar y comprobar."
+      - "Los casos límite son tan importantes como el caso normal."
+    recursos:
+      - "Documentación de pytest"
+      - "Apuntes del módulo"
+  - id: "tema-2"
+    titulo: "Depuración"
+    resumen: |
+      Depurar es observar la ejecución de un programa para localizar la causa
+      de un comportamiento incorrecto. El depurador permite parar el programa,
+      inspeccionar variables y avanzar paso a paso.
+    puntos_clave:
+      - "Un punto de interrupción detiene la ejecución en una línea concreta."
+      - "La pila de llamadas muestra cómo se llegó hasta ese punto."
+      - "Inspeccionar valores es más fiable que adivinar."
+    recursos: []
+preguntas:
+  - id: "p1"
+    tipo: "test"
+    enunciado: "¿Qué comprueba principalmente una prueba unitaria?"
+    opciones:
+      - "a) El sistema completo con usuarios reales"
+      - "b) Una unidad pequeña de código de forma aislada"
+      - "c) La velocidad de la red"
+      - "d) El diseño gráfico de la aplicación"
+    respuesta: "b"
+    explicacion: |
+      La prueba unitaria aísla una función o clase para comprobar su
+      comportamiento sin depender del resto del sistema.
+    dificultad: "baja"
+    tema: "tema-1"
+  - id: "p2"
+    tipo: "corta"
+    enunciado: "Explica la diferencia entre error, fallo y defecto."
+    respuesta: |
+      El defecto es la causa en el código; el error es el estado incorrecto
+      que se produce; el fallo es la manifestación observable del error.
+    explicacion: |
+      Conviene usar los tres términos con precisión: el defecto se corrige,
+      el error se detecta y el fallo es lo que ve el usuario.
+    dificultad: "media"
+    tema: "tema-1"
+  - id: "p3"
+    tipo: "practica"
+    enunciado: |
+      Escribe una prueba unitaria para una función que suma dos números.
+      Indica qué caso normal y qué caso límite comprobarías.
+    respuesta: |
+      Llamar a la función con dos valores conocidos y comprobar el resultado
+      esperado. Como caso límite, probar con cero y con un número negativo.
+    explicacion: |
+      Una prueba mínima comprueba un caso normal; los casos límite añaden
+      confianza sin repetir la misma comprobación.
+    dificultad: "media"
+    tema: "tema-1"
+ejercicios:
+  - id: "e1"
+    titulo: "Depurar una suma"
+    enunciado: |
+      Tienes una función que debería devolver la suma de dos números, pero
+      devuelve una concatenación. Sigue estos pasos:
+      1. Escribe el caso de prueba.
+      2. Ejecuta el depurador.
+      3. Inspecciona los tipos de los argumentos.
+      4. Corrige el fallo y vuelve a ejecutar.
+    pistas:
+      - "Comprueba si los argumentos son texto en lugar de números."
+      - "Usa un punto de interrupción dentro de la función."
+    solucion: |
+      Convertir los argumentos a número antes de sumar o asegurar que la
+      función recibe tipos numéricos. Después, ejecutar la prueba y comprobar
+      que devuelve el resultado esperado.

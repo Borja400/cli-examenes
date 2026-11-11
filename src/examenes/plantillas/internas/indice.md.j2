@@ -1,0 +1,23 @@
+# Índice de materiales
+
+{% if registros %}
+{% for registro in registros %}
+## {{ registro.material.titulo }}
+
+- **Módulo:** {{ registro.material.modulo }}
+{% if registro.material.curso %}
+- **Curso:** {{ registro.material.curso }}
+{% endif %}
+- **Archivo:** `{{ registro.archivo }}`
+- **Temas:** {{ registro.material.temas | length }}
+- **Preguntas:** {{ registro.material.preguntas | length }}
+- **Ejercicios:** {{ registro.material.ejercicios | length }}
+{% if registro.material.descripcion %}
+
+{{ registro.material.descripcion }}
+{% endif %}
+
+{% endfor %}
+{% else %}
+No hay materiales todavía.
+{% endif %}

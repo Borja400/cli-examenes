@@ -1,0 +1,102 @@
+# {{ material.titulo }}
+
+{% if material.descripcion %}
+> {{ material.descripcion | replace('\n', '\n> ') }}
+
+{% endif %}
+{% if material.modulo %}**Módulo:** {{ material.modulo }}  
+{% endif %}
+{% if material.curso %}**Curso:** {{ material.curso }}  
+{% endif %}
+{% if material.autor %}**Autor:** {{ material.autor }}  
+{% endif %}
+{% if material.fecha %}**Fecha:** {{ material.fecha }}  
+{% endif %}
+
+{% if material.objetivos %}
+## Objetivos
+
+{% for objetivo in material.objetivos %}
+- {{ objetivo }}
+{% endfor %}
+
+{% endif %}
+## Temario
+
+{% for tema in material.temas %}
+### {{ tema.id }} · {{ tema.titulo }}
+
+{% if tema.resumen %}
+{{ tema.resumen }}
+
+{% endif %}
+{% if tema.puntos_clave %}
+**Puntos clave:**
+
+{% for punto in tema.puntos_clave %}
+- {{ punto }}
+{% endfor %}
+
+{% endif %}
+{% if tema.recursos %}
+**Recursos:**
+
+{% for recurso in tema.recursos %}
+- {{ recurso }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% if material.preguntas %}
+## Preguntas
+
+{% for pregunta in material.preguntas %}
+### {{ pregunta.id }} · {{ pregunta.tipo | capitalize }}
+
+**Dificultad:** {{ pregunta.dificultad }}{% if pregunta.tema %} · **Tema:** {{ pregunta.tema }}{% endif %}
+
+
+{{ pregunta.enunciado }}
+
+{% if pregunta.opciones %}
+{% for opcion in pregunta.opciones %}
+- {{ opcion }}
+{% endfor %}
+
+{% endif %}
+{% if mostrar_soluciones %}
+{% if pregunta.respuesta %}
+**Respuesta:** {{ pregunta.respuesta }}
+
+{% endif %}
+{% if pregunta.explicacion %}
+**Explicación:** {{ pregunta.explicacion }}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if material.ejercicios %}
+## Ejercicios
+
+{% for ejercicio in material.ejercicios %}
+### {{ ejercicio.id }} · {{ ejercicio.titulo }}
+
+{{ ejercicio.enunciado }}
+
+{% if ejercicio.pistas %}
+**Pistas:**
+
+{% for pista in ejercicio.pistas %}
+- {{ pista }}
+{% endfor %}
+
+{% endif %}
+{% if mostrar_soluciones and ejercicio.solucion %}
+**Solución:**
+
+{{ ejercicio.solucion }}
+
+{% endif %}
+{% endfor %}
+{% endif %}
